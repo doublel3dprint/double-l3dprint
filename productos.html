@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | Double L3Dprint</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #101114;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+    background: #17191e;
+    border-bottom: 1px solid #292c32;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff7628;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #ff7628;
+}
+
+.hero {
+    min-height: 480px;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(110deg, #17191e, #25212a);
+}
+
+.hero small {
+    color: #ff7628;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 72px);
+    margin: 22px 0;
+    max-width: 750px;
+}
+
+.hero h1 span {
+    color: #ff7628;
+}
+
+.hero p {
+    color: #b9bbc1;
+    line-height: 1.7;
+    max-width: 520px;
+    font-size: 17px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff7628;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 16px 26px;
+    border-radius: 6px;
+    margin-top: 30px;
+    width: fit-content;
+}
+
+.btn:hover {
+    background: #ff934f;
+}
+.catalog-intro {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 25px;
+    padding: 40px 8%;
+}
+
+.catalog-presentation,
+.catalog-explore {
+    flex: 1;
+    min-width: 0;
+    background: #1b1e24;
+    border: 1px solid #30333a;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.catalog-intro h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.catalog-intro p {
+    color: #a9abb2;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.makerworld-button {
+    display: inline-block;
+    background: #ff7628;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 13px 20px;
+    border-radius: 7px;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.makerworld-button:hover {
+    background: #ff934f;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .catalog-intro {
+        flex-direction: column;
+    }
+}
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #a9abb2;
+    margin-bottom: 35px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.product {
+    background: #1b1e24;
+    border: 1px solid #30333a;
+    border-radius: 12px;
+    padding: 25px;
+    transition: 0.2s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    border-color: #ff7628;
+}
+
+.product-image {
+    height: 130px;
+    background: linear-gradient(135deg, #292d35, #17191e);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+    margin-bottom: 22px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 220px;
+    max-height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin-bottom: 12px;
+}
+
+.product p {
+    color: #a9abb2;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#gaming .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+#gaming .producto {
+    background: #1b1e24;
+    border: 1px solid #30333a;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+#navidad .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+#navidad .producto {
+    background: #1b1e24;
+    border: 1px solid #30333a;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+#navidad .producto img {
+    width: 100px;
+    height: 90px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+#gaming .producto img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+/* ESCRITORIO Y HOGAR */
+#escritorio .productos-grid,
+#hogar .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+#escritorio .producto,
+#hogar .producto {
+    background: #1b1e24;
+    border: 1px solid #30333a;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+}
+
+#escritorio .producto img,
+#hogar .producto img {
+    width: 100px;
+    height: 90px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Double <span>L3Dprint</span></div>
+
+    <nav>
+        <a href="index.html">INICIO</a>
+        <a href="productos.html">PRODUCTOS</a>
+    </nav>
+</header>
+
+<div class="catalog-intro">
+
+    <div class="catalog-presentation">
+        <h2>Nuestro catálogo</h2>
+        <p>
+            Descubrí nuestra selección de modelos impresos en 3D.
+            Encontrá accesorios, organizadores, decoración y mucho más.
+        </p>
+    </div>
+
+    <div class="catalog-explore">
+        <h2>¿Buscás algo más?</h2>
+        <p>
+            Estos son algunos de nuestros modelos más populares.
+            Explorá miles de diseños en MakerWorld y encontrá
+            exactamente lo que estás buscando.
+        </p>
+
+        <a href="https://makerworld.com/"
+           target="_blank"
+           class="makerworld-button">
+            EXPLORAR MAKERWORLD ↗
+        </a>
+    </div>
+
+</div>
+
+<!-- 🎄 CATÁLOGO DE NAVIDAD -->
+<section id="navidad" class="catalogo-seccion">
+
+    <h2>🎄 Navidad</h2>
+
+    <div class="productos-grid">
+
+        <div class="producto">
+            <img src="imagenes/bowls navidad arbowebp" alt="Bowls de Navidad">
+            <h3>Christmas Tree Bowls</h3>
+            <a href="https://makerworld.com/es/models/2134302-christmas-tree-bowls-stackable" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/estrella de la muerte navidad.webp" alt="Bola de Navidad Star Wars">
+            <h3>Death Star Christmas Ball</h3>
+            <a href="https://makerworld.com/es/models/837733-death-star-christmas-ball" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/bola de navidad.webp" alt="Adorno navideño">
+            <h3>Heritage Elegance Christmas Bauble Bowl</h3>
+            <a href="https://makerworld.com/es/models/3496399-heritage-elegance-christmas-bauble-bowl" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/agarre de servilletas navidad.webp" alt="Agarre de servilletas">
+            <h3>Christmas Napkin Rings</h3>
+            <a href="https://makerworld.com/es/models/2130415-christmas-napkin-rings-set-festive-table-decor" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portavela de papa noel.webp" alt="Figura navideña">
+            <h3>Atmospheric Christmas Figures</h3>
+            <a href="https://makerworld.com/es/models/3147359-atmospheric-christmas-figures" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/sagrada familia.webp" alt="Pesebre navideño">
+            <h3>Minimalist Nativity Scene</h3>
+            <a href="https://makerworld.com/es/models/3279470-minimalist-nativity-scene-minimalist-nativity-set" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/piramide luminosa para vela navidad.webp" alt="Pirámide navideña">
+            <h3>Christmas Pyramid</h3>
+            <a href="https://makerworld.com/es/models/1902272-christmas-pyramid" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portavelas de reno navidad.webp" alt="Portavelas de reno">
+            <h3>Christmas Reindeer Candle Holder</h3>
+            <a href="https://makerworld.com/es/models/3359470-christmas-reindeer-candle-holder-holiday-candle" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/cascanueces decoracion navidad.webp" alt="Cascanueces">
+            <h3>Nutcracker Decoration</h3>
+            <a href="https://makerworld.com/es/models/1932060-nutcracker-decoration" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/bola de navidad.webp" alt="Bolas navideñas">
+            <h3>Modern Christmas Ornaments</h3>
+            <a href="https://makerworld.com/es/models/2081246-modern-christmas-ornaments-baubles-decoration" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/arbol navidad luminoso.webp" alt="Árbol luminoso">
+            <h3>Tealight Christmas Tree</h3>
+            <a href="https://makerworld.com/es/models/2022402-tealight-christmas-tree" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <h3>Christmas Tree Snowflake Ornament Set</h3>
+            <a href="https://makerworld.com/es/models/2004602-christmas-tree-snowflake-ornament-set" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/reno navidad.webp" alt="Adorno de reno">
+            <h3>Rudolph Ornament</h3>
+            <a href="https://makerworld.com/es/models/1995449-rudolph-ornament-perfect-for-christmas-deer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/arbol de navidad moderno.webp" alt="Árbol minimalista">
+            <h3>Christmas Tree Minimalistic Decor</h3>
+            <a href="https://makerworld.com/es/models/3338545-christmas-tree-minimalistic-decor-no-supports-art" target="_blank">Ver modelo</a>
+        </div>
+
+    </div>
+</section>
+<!-- 🎮 CATÁLOGO GAMING -->
+<section id="gaming" class="catalogo-seccion">
+
+    <h2>🎮 Gaming</h2>
+
+    <div class="productos-grid">
+
+        <div class="producto">
+            <img src="imagenes/soporte gta6.webp" alt="Soporte GTA VI">
+            <h3>GTA VI DualSense & Xbox Stand</h3>
+            <a href="https://makerworld.com/es/models/3048125-gta-vi-stand-for-dualsense-and-xbox-gta-6" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte grande de gta6.webp" alt="Soporte universal GTA VI">
+            <h3>GTA VI Universal Controller Stand</h3>
+            <a href="https://makerworld.com/es/models/3035369-gta-vi-universal-ps5-xbox-controller-stand" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/sporte de cactus.webp" alt="Soporte de auriculares cactus">
+            <h3>Cactus Headphone Stand</h3>
+            <a href="https://makerworld.com/es/models/1646203-cactus-headphone-stand" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte play5.webp" alt="Soporte doble PS5">
+            <h3>Dual PS5 Controller Stand</h3>
+            <a href="https://makerworld.com/es/models/2066129-dual-stand-for-playstation-5-controller" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/juego mini cancha de basquet.webp" alt="Mini cancha de básquet">
+            <h3>Mini Finger Basketball Court</h3>
+            <a href="https://makerworld.com/es/models/1352711-mini-finger-basketball-court-no-ams-needed" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/pokeball.webp" alt="Pokeball funcional">
+            <h3>Functional Pokeball</h3>
+            <a href="https://makerworld.com/es/models/2009933-functional-pokeball-no-glue" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte multiuso.webp" alt="Soporte de mando y auriculares">
+            <h3>Gamepad & Headset Stand</h3>
+            <a href="https://makerworld.com/es/models/1524102-gamepad-and-headset-stand-compatible-with-the-a1-m" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte xbox.webp" alt="Soporte Xbox Crystal">
+            <h3>Xbox Crystal Controller Stand</h3>
+            <a href="https://makerworld.com/es/models/585954-xbox-controller-stand-xbox-crystal-no-support" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/trono para mando ps5 señor oscuro.webp" alt="Trono para mando PS5">
+            <h3>Dark Lord PS5 Controller Throne</h3>
+            <a href="https://makerworld.com/es/models/2470468-dark-lord-ps5-controller-throne" target="_blank">Ver modelo</a>
+        </div>
+
+    </div>
+</section>
+<!-- 🖥️ ESCRITORIO Y ORGANIZACIÓN -->
+<section id="escritorio" class="catalogo-seccion">
+
+    <h2>🖥️ Escritorio y organización</h2>
+
+    <div class="productos-grid">
+
+        <div class="producto">
+            <img src="imagenes/nube fotos.webp" alt="Cloud Photo Card Memo Stand">
+            <h3>Cloud Photo Card Memo Stand</h3>
+            <a href="https://makerworld.com/es/models/2576510-cloud-photo-card-memo-stand" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portalapices turbo.webp" alt="Turbocharger Pen Holder">
+            <h3>Turbocharger Pen Holder</h3>
+            <a href="https://makerworld.com/es/models/3418180-turbocharger-pen-holder-turbo-desk-organizer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portalapices pelota.webp" alt="Soccer Ball Pen Holder">
+            <h3>Soccer Ball Pen Holder</h3>
+            <a href="https://makerworld.com/es/models/2641057-soccer-ball-pen-holder-multisize-multistyle" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/organizador torre.webp" alt="Stackable Tower Organizer">
+            <h3>Stackable Tower Organizer</h3>
+            <a href="https://makerworld.com/es/models/2822691-stackable-tower-organizer-and-it-spins" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte pistola silicona.webp" alt="Glue Gun Holder">
+            <h3>Glue Gun Holder</h3>
+            <a href="https://makerworld.com/es/models/3209163-glue-gun-holder-w-stick-storage-drip-tray" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portalapices camara.webp" alt="Canon Lens Container and Pen Holder">
+            <h3>Canon Lens Container & Pen Holder</h3>
+            <a href="https://makerworld.com/es/models/149954-canon-lens-container-and-pen-holder" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/tacho basquet.webp" alt="Basketball Trash Can">
+            <h3>Basketball Trash Can</h3>
+            <a href="https://makerworld.com/es/models/2370602-universal-basketball-trash-can-desk-floor-size" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/organizador modular.webp" alt="Modular Desk Organizer">
+            <h3>Modular Desk Organizer</h3>
+            <a href="https://makerworld.com/es/models/1151962-modular-desk-organizer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/portalapices japandi.webp" alt="Japandi Wabi-Sabi Pencil Holder">
+            <h3>Japandi Wabi-Sabi Pencil Holder</h3>
+            <a href="https://makerworld.com/es/models/2319134-modern-japandi-wabi-sabi-pencil-holder-brush-cup" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/organizador espiral.webp" alt="Large Desktop Organizer">
+            <h3>Large Desktop Organizer</h3>
+            <a href="https://makerworld.com/es/models/3167026-large-desktop-organizer-spiral-design" target="_blank">Ver modelo</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🏠 HOGAR Y DECORACIÓN -->
+<section id="hogar" class="catalogo-seccion">
+
+    <h2>🏠 Hogar y decoración</h2>
+
+    <div class="productos-grid">
+
+        <div class="producto">
+            <img src="imagenes/exprimidor pasta.webp">
+            <h3>Toothpaste Squeezer</h3>
+            <a href="https://makerworld.com/es/models/2920462-toothpaste-squeezer-cream-tube-squeezer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/vaso drenaje.webp">
+            <h3>Ribbed Drain Cup</h3>
+            <a href="https://makerworld.com/es/models/2595386-ribbed-drain-cup" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/organizador entrada.webp">
+            <h3>Minimalist Entryway Organizer</h3>
+            <a href="https://makerworld.com/es/models/2986713-minimalist-entryway-organizer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/organizador heladera.webp">
+            <h3>Refrigerator Shelf Division</h3>
+            <a href="https://makerworld.com/es/models/1141520-refrigerator-shelf-division-fridge-organizer" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/caja panuelos.webp">
+            <h3>Aura Tissue Box Cover</h3>
+            <a href="https://makerworld.com/es/models/2624554-aura-collection-tissue-box-cover-minimal-design" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/perchero gorras.webp">
+            <h3>Cap Hanger</h3>
+            <a href="https://makerworld.com/es/models/2738253-cap-hanger" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/mantel encaje.webp">
+            <h3>Elegant Lace Doily Collection</h3>
+            <a href="https://makerworld.com/es/models/3080628-elegant-lace-doily-collection-home-decor-doilies" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/porta rollo cocina.webp">
+            <h3>Japandi Kitchen Paper Holder</h3>
+            <a href="https://makerworld.com/es/models/2857719-aura-collection-japandi-kitchen-paper-holder" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/bowl spiderman.webp">
+            <h3>Spider-Man Popcorn & Candy Bowl</h3>
+            <a href="https://makerworld.com/es/models/3024525-spider-man-popcorn-candy-bowl-colored" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/soporte toalla.webp">
+            <h3>Cabinet Door Towel Holder</h3>
+            <a href="https://makerworld.com/es/models/3273571-cabinet-door-towel-holder" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/tope puerta.webp">
+            <h3>Little Man Door Stopper</h3>
+            <a href="https://makerworld.com/es/models/2784098-door-stopper-little-man" target="_blank">Ver modelo</a>
+        </div>
+
+        <div class="producto">
+            <img src="imagenes/gancho pared.webp">
+            <h3>Modern Foldable Wall Hook</h3>
+            <a href="https://makerworld.com/es/models/2783407-modern-minimalistic-foldable-wall-hook" target="_blank">Ver modelo</a>
+        </div>
+
+    </div>
+</section>
+</body>
+</html>
